@@ -1,0 +1,34 @@
+<p>Formulario works!</p>
+
+<div class="card w50 m0">
+  <form [formGroup]="Formulario" (submit)="enviar()">
+    <div class="formControl">
+      <input formControlName="nombre" id="nombre" placeholder=" " type="text" />
+      <label  for="nombre">Nombre</label>
+      <span class="error" [hidden]="nombre.valid || nombre.pristine">Campo requerido</span>
+    </div>
+
+    <div class="formControl">
+      <input formControlName= "correo" name="correo" id="correo" placeholder=" " type="email" />
+      <label for="correo">Correo</label>
+      @if(correo.errors?.["required"]){
+        <span class="error" [hidden]="correo.valid || correo.pristine">Campo requerido</span>
+      }
+      @if(correo.errors?.["email"]){
+        <span class="error" [hidden]="correo.valid || correo.pristine">No es un correo valido</span>
+      }
+
+      <div formGroupName="nuevo">
+        <div class="formControl">
+          <input formControlName="edad" id="edad" placeholder=" " type="text" />
+          <label  for="edad">Edad</label>
+          <span class="error" [hidden]="Formulario.get('nuevo')?.get('edad')?.valid || Formulario.get('nuevo')?.get('edad')?.pristine">Campo requerido</span>
+        </div>
+      </div>
+
+    </div>
+    <button type="submit" [disabled]="correo.invalid">Enviar</button>
+  </form>
+</div>
+
+{{ Formulario.value | json }}

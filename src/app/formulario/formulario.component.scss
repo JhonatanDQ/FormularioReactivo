@@ -1,0 +1,80 @@
+$primary : #7e7e7e;
+$primary-hover: #d2d2d2;
+$white: white;
+$error: rgb(182, 62, 62);
+
+.w50{
+  width: 50%;
+}
+.w100{
+  width: 100%;
+}
+.m0{
+  margin: 0 auto;
+}
+
+.error{
+  color:$error;
+}
+
+.card{
+  padding: 1em;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);;
+}
+
+.formControl{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 2em 0em;
+  &:focus-within{
+    label{
+      // color: $primary-hover;
+      top: 1em;
+      left: 0.5em;
+      transition: all 0.2s linear;
+    }
+  }
+  label{
+    position: absolute;
+    top: 2.5em;
+    left: 1.5em;
+    pointer-events: none;
+    transition: all 0.2s linear;
+  }
+  input{
+    border: none;
+    border-bottom: 1px solid $primary;
+    padding: 0.5em 2em;
+    background: linear-gradient(to right, $primary-hover 100%, transparent 0%)no-repeat;
+    background-size: 0% 2px;
+    background-position: center bottom;
+    transition: background-size 0.4s ease-in-out;
+    &:focus-visible{
+      outline: none;
+      background-size: 100% 2px;
+      background-image: linear-gradient(to right, $primary 100%, transparent 0%);
+    }
+    &:not(:placeholder-shown) + label{
+      color:$primary;
+      top: 1em;
+      left: 0.5em;
+      transition: all 0.2s linear;
+    }
+  }
+}
+
+button {
+  background-color: $primary;
+  color: $white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+  &:disabled{
+    background-color: $primary-hover;
+  }
+}
